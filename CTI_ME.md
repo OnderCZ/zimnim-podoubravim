@@ -1,66 +1,59 @@
-# ZIMNÍM PODOUBRAVÍM 2027 — web STUDIO edice
+# Zimním Podoubravím 2027 — WEB STUDIO / sjednocená verze
 
-Moderní jednorázový web pro turistický pochod a lyžařský přejezd. Dodáno jako hotový projekt v HTML, PHP, CSS a malém množství JavaScriptu. Nepotřebuje WordPress, databázi, API klíče, externí knihovny ani registraci účastníků.
+Tato sada vychází z původního webu STUDIO a navazuje na schválený plakát a tiskové materiály `STUDIO_ZAROVNANO` (9. 10. 2026). Zachovává jednoduchý **PHP + HTML + CSS + JavaScript**, bez databáze, WordPressu, externích JS/CSS knihoven a cookies pro analytiku.
 
 ## Nasazení na hosting
 
-1. Rozbalte ZIP. **Obsah adresáře `Zimnim_Podoubravim_2027_WEB`** nahrajte přes FTP/SFTP do cílového adresáře webu (například `public_html/podoubravim/`).
-2. Hosting musí podporovat **PHP 7.4 nebo novější** (doporučené PHP 8.2+). Ve výchozím nastavení serveru se spouští soubor `index.php`.
-3. Otevřete příslušnou adresu, např. `https://vase-domena.cz/podoubravim/`. Náhled webu lze po rozbalení otevřít také přes `nahled.html` bez PHP, ale odkaz *Přidat do kalendáře* funguje pouze přes `index.php`.
-4. Do souboru `config.php` doplňte položku `site_url`, aby náhled na sociálních sítích používal správnou absolutní adresu obrázku.
+1. Rozbalte archiv. Nahrajte **obsah složky `Zimnim_Podoubravim_2027_WEB_STUDIO_SJEDNOCENO`** na PHP hosting (například do `public_html/podoubravim/`).
+2. Je potřeba PHP **7.4 nebo novější**. Hlavní stránka se spouští ze souboru `index.php`.
+3. Před zveřejněním upravte v `config.php` položku **`site_url`** na skutečnou úplnou veřejnou adresu webu, například `https://vase-domena.cz/podoubravim/`. Tato adresa slouží pro správný náhled odkazu na sociálních sítích. Dokud není vyplněná, OG obrázek v metadatech úmyslně neuvádíme.
+4. Zkontrolujte údaje, odkazy na Mapy.com a podmínky použití mapového podkladu. Web nebyl z tohoto balíčku publikován na živou doménu.
 
-### Jak spustit web na vlastním počítači
+### Náhled bez hostingu
 
-V adresáři projektu spusťte `php -S localhost:8000` a v prohlížeči otevřete `http://localhost:8000/`. Případně lze využít XAMPP, Laragon či jiný lokální PHP server. Soubor `index.php` samotný dvojklikem neotevírejte – potřebuje PHP.
+Soubor `nahled.html` je statický náhled připravený přímo ze stejného PHP souboru. Otevřete jej v prohlížeči; všechny místní obrázky a styly jsou přiloženy. **Pouze odkaz „Přidat akci do kalendáře“ vyžaduje PHP**, protože soubor ICS vzniká dynamicky. Pro věrné ověření webu otevřete stránku přes PHP, například v adresáři projektu příkazem `php -S localhost:8000`.
 
-## Co a kde upravovat
+## Kde co změnit
 
-| Co chci změnit | Kde |
+| Část webu | Soubor |
 | --- | --- |
-| Datum, texty, ročník, kontakt, startovné, trasy, jejich odkazy | `config.php` |
-| Hlavní rozložení, sekce, HTML, vlastní texty navíc | `index.php` |
-| Barvy, velikost nadpisů, mezery, responzivní vzhled | `assets/css/style.css` |
-| Mobilní menu | `assets/js/main.js` |
-| Ilustrace zimní krajiny (vektory) | `assets/img/krajina.svg` |
-| QR kódy tras | `assets/img/qr-15.png`, `assets/img/qr-20.png` |
-| Mapa a tiskový popis | `assets/img/mapa-a5.png` a `downloads/*.pdf` |
-| Znaky pořadatelů | `assets/img/znak-sobinov.png`, `assets/img/memorial.png` |
-| Obrázek pro sdílení | `assets/img/sdileni.png` |
+| Datum, ročník, kontakty, informace, Mapy.com, popisy tras a soubory ke stažení | `config.php` |
+| HTML a rozložení částí stránky | `index.php` |
+| Barvy, velikosti a responzivní vzhled | `assets/css/style.css` (poslední sekce STUDIO 2027 obsahuje finální doladění) |
+| Mobilní navigace | `assets/js/main.js` |
+| Zimní ilustrace z plakátu | `assets/img/krajina.svg` |
+| Oficiální znak obce v SVG | `assets/img/znak-sobinov.svg` |
+| Modernizovaný motiv memoriálu | `assets/img/symbol-memorialu.png` |
+| Modernizované vodorovné logo memoriálu | `assets/img/logo-memorialu-moderni.png` |
+| Mapa pro webové zobrazení | `assets/img/mapa-a5.webp` a `mapa-a5.png` |
+| Dvě QR grafiky | `assets/img/qr-15.png` a `qr-20.png` |
+| Široký obrázek pro sdílení odkazu na web | `assets/img/og-nahled.png` |
+| Původní svislý poutač | `downloads/poutac-1080x1350.png` |
+| Schválené tiskové materiály | `downloads/` |
 
-Pro změnu hlavní modré či oranžové upravte hodnoty na začátku `assets/css/style.css` ve `:root` (například `--navy`, `--blue`, `--orange`). Písmo: Lato, se systémovým záložním písmem. Web neobsahuje ani nevyžaduje balíčky fontových souborů.
+Při aktualizaci data měňte `date_text`, `date_day`, `date_display`, `date_iso`, `year` a případně `edition` v `config.php`. Nezapomeňte zároveň vyměnit PDF plakátu a poutač. Mapa a popis tras A5 jsou **bez data a čísla ročníku** a mohou se používat v dalších letech, pokud zůstanou trasy stejné.
 
-**Pozor při změně tras:** pokud v `config.php` změníte Mapy.com odkaz, je nutné také **vygenerovat a nahradit příslušný QR obrázek**. Pokud změníte GPS stopu, nahraďte rovněž odpovídající GPX a mapový PDF/PNG podklad. Pouhá úprava textu nemění stažené soubory ani QR kódy.
+Barvy tras jsou konzistentně **15 km = cihlově červená `#B84C3E`; 20 km = modrá `#176BB1`**. Pokud měníte QR odkaz nebo GPS průběh trasy, nestačí upravit jen PHP konfiguraci: je nutné nahradit i QR obrázek, GPX a mapové tiskové podklady.
 
-**Pozor při změně roku nebo data:** soubor `?download=kalendar` vzniká automaticky z PHP konfigurace, ale název stahovaného ICS v `index.php` a statické soubory PDF/PNG obsahují rok 2027, takže je nutné je při nové akci aktualizovat.
+## Co je zahrnuto
 
-## Obsah webu
+- Úvodní část podle posledního plakátu: mírné kopce, smrky, řeka, běžkař a turista, aktualizované logo memoriálu a originální znak Sobíňova bez vnější bílé plochy.
+- Přehledné informace o datu, startu, cíli a startovném.
+- Karty 15 a 20 km s odkazy na Mapy.com, QR a GPX.
+- Přesná turistická mapa dodaná zadavatelem, ke zvětšení a ke stažení.
+- Tisková PDF: plakát A4, mapa A5, popis tras A5, oboustranná A5 mapa + popis.
+- Poutač 1080 × 1350 px a nový široký náhled odkazu 1200 × 630 px.
+- Popisy tras beze změny znění; důležitá informace o ohleduplnosti k přírodě.
+- Kontakty, e-mail, web obce, přidání akce do kalendáře ve formátu `.ics`.
+- Responzivní verze pro počítač, tablet a mobil; bez externích fontových souborů.
 
-- Úvodní část podle STUDIO edice plakátu, s vlastním vektorovým zimním motivem
-- Datum, start/cíl, startovné
-- Karty okruhů 15/20 km s URL Mapy.com, QR a GPX
-- Mapa A5 a tiskové materiály ke stažení
-- Rozbalovací popis společného úseku a dvou větví trasy
-- Informace pro účastníky, počasí, doprovod dětí a kontakty
-- Soubor ICS pro přidání akce do kalendáře
-- Responzivní mobilní navigace, přístupné ovládání, bez cookies a sledovacích skriptů
+## Poznámky před zveřejněním
 
-## Volitelná interaktivní mapa
+- **Mapy.com:** Mapový obrázek pochází z podkladů poskytnutých zadavatelem. Před veřejným nasazením ověřte licenční oprávnění a zachovejte uvedení zdroje Mapy.com / Seznam.cz. Viz https://licence.mapy.com/.
+- **Čas a údaje:** Zkontrolujte konečné organizační údaje, čas, kontakty a platnost Mapy.com odkazů.
+- **Případná interaktivní mapa:** `mapy_embed_url` v `config.php` přijímá výhradně skutečnou adresu iframe získanou na Mapy.com. Krátké odkazy `mapy.cz/s/...` zde nefungují. Není-li uvedeno, zobrazí se pouze stažitelná mapa.
+- Web vyžaduje běžný PHP hosting; žádná platební brána, registrace či analytika není součástí balíčku.
 
-V `config.php` je položka `mapy_embed_url`. Nechte ji prázdnou, nebo do ní vložte **skutečnou URL z iframe kódu** vytvořeného na Mapy.com přes *Sdílet → Vložit mapu do vlastních stránek*. Potom se interaktivní mapa zobrazí pod stažitelnou mapou. Krátký odkaz `mapy.cz/s/...` není iframe URL a pro tuto položku se nehodí. Úřední návod: https://help.mapy.com/cs/nastroje/vlozeni-mapy/
+## Původní podklady
 
-## Licence a mapové podklady
-
-Podklad v náhledu mapy a v PDF vychází z mapového snímku poskytnutého zadavatelem. V návrhu je zachováno označení zdroje **Mapy.com / Seznam.cz**. Před zveřejněním ověřte, že konkrétní použití snímku splňuje licenční podmínky Mapy.com včetně požadovaného copyrightového textu. Více na https://licence.mapy.com/.
-
-Originální obrázek turistické mapy a podklady mapových tras nejsou součástí autorské licence k HTML/CSS. V souboru `assets/img/mapa-a5.webp` je optimalizovaný náhled, `mapa-a5.png` je kvalitní verze ke zvětšení.
-
-## Kontrola před zveřejněním
-
-- [ ] Případné poslední změny informací v `config.php`
-- [ ] Aktualizace PDF, GPX, QR a mapového náhledu, pokud se změní trasy
-- [ ] Ověření telefonů a e-mailu
-- [ ] Otevření Mapy.com a kontrola QR odkazů
-- [ ] Vyplnění `site_url` a kontrola sdílecího obrázku
-- [ ] Ověření použití podkladu Mapy.com na veřejném webu
-
-Zpracování: moderní jednoduchý web v návaznosti na vizuální identitu akce Zimním Podoubravím 2027.
+Materiály `Zimnim_Podoubravim_2027_WEB_STUDIO.zip` (web) a schválená grafická sada `Zimnim_Podoubravim_2027_STUDIO_ZAROVNANO_komplet.zip` (plakáty, mapa, trasy, loga, sociální grafika). Originální znak obce je vložen z poskytnutého SVG.

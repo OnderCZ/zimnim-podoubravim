@@ -12,19 +12,21 @@ return [
     'memorial' => 'Memoriál Ladislava Dymáčka',
     'category' => 'Lyžařský přejezd / turistický pochod',
     'date_text' => 'Sobota 6. února 2027',
+    'date_day' => 'SOBOTA',
+    'date_display' => '6. ÚNORA 2027',
     'date_iso' => '2027-02-06',
     'start_time' => '07:00',
     'end_time' => '16:00',
     'location' => 'Kulturní dům Sobíňov',
     'entry_adults' => '30 Kč',
     'entry_children' => 'Děti do 15 let zdarma',
-    'intro' => 'Dva zimní okruhy malebným Podoubravím. Vyrazte svým tempem a užijte si den na čerstvém vzduchu.',
+    'intro' => 'Tradiční zimní pochod a lyžařský přejezd mírně zvlněnou krajinou Podoubraví. Vyberte si jednu ze dvou tras, nebo se vydejte vlastní cestou.',
     'organizers' => 'Obec Sobíňov × KČT Havlíčkův Brod',
     'website' => 'https://www.obecsobinov.cz/',
     'routes' => [
         [
             'distance' => '15',
-            'color' => 'orange',
+            'color' => 'red',
             'name' => 'Kratší okruh',
             'places' => ['Sobíňov', 'Dolní Sokolovec', 'Podmoklany', 'Sobíňov'],
             'details' => 'Na silnici doprava a přes Bezděkov a Štěpánov do Podmoklan. U turistického rozcestníku doprava po modré turistické značce do cíle v kulturním domě v Sobíňově.',
@@ -50,6 +52,7 @@ return [
         'Pochod se koná za každého počasí a každý účastník jde na vlastní nebezpečí.',
         'Děti do 15 let se mohou zúčastnit v doprovodu osoby starší 18 let.',
         'V cíli obdrží každý účastník pamětní list a bude připraveno občerstvení.',
+        'Prosíme účastníky, aby se během pochodu chovali ohleduplně k přírodě a respektovali své okolí.',
     ],
     'contacts' => [
         [
@@ -61,16 +64,19 @@ return [
         ],
         [
             'name' => 'Miloš Starý',
-            'subtitle' => 'Informace k pochodu',
+            'subtitle' => 'Kontakt k pochodu',
             'phone_label' => '725 101 185',
             'phone_href' => '+420725101185',
             'email' => 'ou@obecsobinov.cz',
+        'website' => 'https://www.obecsobinov.cz/',
         ],
     ],
     'files' => [
         'map' => 'downloads/mapa-a5.pdf',
         'description' => 'downloads/popis-tras-a5.pdf',
         'poster' => 'downloads/plakat-a4.pdf',
+        'combined' => 'downloads/mapa-a-popis-oboustranne-a5.pdf',
+        'social' => 'downloads/poutac-1080x1350.png',
     ],
     // Chcete-li později přidat živou Mapy.com mapu, vložte adresu iframe
     // získanou přes "Sdílet" -> "Vložit mapu do vlastních stránek".
